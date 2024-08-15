@@ -5,3 +5,4 @@ opencv-python
 Pillow
 gunicorn==20.0.4
 numpy
+libgl1-mesa-glx
