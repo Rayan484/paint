@@ -9,7 +9,7 @@ import onnxruntime
 
 
 
-encoder_path = "https://demo-htmllinks.com/sam_vit_b_encoder.onnx"
+encoder_path = "https://www.dropbox.com/scl/fi/64epu0r8x9opz6e9oav2i/sam_vit_b_encoder.onnx?rlkey=svsyckh7bijjyvyi0hlv808dr&st=bska00wy&dl=1"
 encoder_session = onnxruntime.InferenceSession(
     encoder_path, providers=['CPUExecutionProvider'])
 app = Flask(__name__)
