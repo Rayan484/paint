@@ -5,13 +5,25 @@ import flask
 import numpy as np
 import cv2
 import os
+import requests
 import onnxruntime
 
 
 
-encoder_path = "https://www.dropbox.com/scl/fi/64epu0r8x9opz6e9oav2i/sam_vit_b_encoder.onnx?rlkey=svsyckh7bijjyvyi0hlv808dr&st=bska00wy&dl=1"
-encoder_session = onnxruntime.InferenceSession(
-    encoder_path, providers=['CPUExecutionProvider'])
+# Define the URL and the local filename
+url = "https://www.dropbox.com/scl/fi/64epu0r8x9opz6e9oav2i/sam_vit_b_encoder.onnx?rlkey=svsyckh7bijjyvyi0hlv808dr&st=bska00wy&dl=1"
+local_filename = "sam_vit_b_encoder.onnx"
+
+# Download the file if it doesn't exist locally
+if not os.path.exists(local_filename):
+    response = requests.get(url)
+    with open(local_filename, 'wb') as f:
+        f.write(response.content)
+
+# Load the ONNX model using the local file path
+encoder_session = onnxruntime.InferenceSession(local_filename)
+
+
 app = Flask(__name__)
 CORS(app, expose_headers=["Content-Disposition"])
 
