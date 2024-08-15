@@ -2,7 +2,15 @@
   commands = [
     "pip install -r requirements.txt"
   ]
+  builder = "NIXPACKS"
 
 [service]
   name = "my-flask-app"
   start_command = "gunicorn -w 4 -b 0.0.0.0:$PORT main:app"
+  
+[deploy]
+  runtime = "V2"
+  numReplicas = 1
+  sleepApplication = false
+  restartPolicyType = "ON_FAILURE"
+  restartPolicyMaxRetries = 10
