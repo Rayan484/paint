@@ -1,8 +1,6 @@
-﻿flask==3.0.0
-flask-cors
-onnxruntime
-opencv-python-headless
-Pillow
-gunicorn==20.0.4
-numpy
-requests
+﻿Flask==3.0.0
+Flask-Cors==4.0.0
+onnx==1.15.0
+onnxruntime==1.16.3
+opencv-python-headless==4.9.0.80
+Pillow==10.1.0
